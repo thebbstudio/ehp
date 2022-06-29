@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load staticfiles %}
+
+{% block content %}
+
+<a href={% url 'addEmployee' %}>
+  <img src="{{ MEDIA_URL }}plus.png" width="30" height="30" alt="Добавить объект" />
+</a>
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">#</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Пол</th>
+        <th scope="col">Возраст</th>
+        <th scope="col">Должность</th>
+        <th scope="col">Категория</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for employee in employeeList %}
+        <tr>
+            <th scope="row">
+              <button class="btn btn-outline-dark  btn-sm" onclick="navigateToEditEmployee({{employee.0}})">
+                <img src="{{ MEDIA_URL }}edit.png" width="30" height="30" alt="редак." />
+              </button>
+              <button class="btn btn-outline-dark btn-sm">
+                <img src="{{ MEDIA_URL }}delete.png" width="30" height="30" alt="Удал." />
+              </button>
+            </th>
+            {% for field in employee %}
+              <td>{{field}}</td>            
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

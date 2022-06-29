@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="p-3 col-md-6 offset-md-3">
+    <h3>Форма редкактирования сотрудника</h3>
+    <form>
+        <input type="hidden" value="{{employeeData.0}}">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ФИО сотрудника</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="exampleFormControlInput1" 
+                placeholder="name@example.com"
+                value="{{employeeData.1}}"
+            >
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Пол сотрудника</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+            value="{{employeeData.2}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Дата рождения</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+            value="{{employeeData.2}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Должность</label>
+            <select class="form-select" aria-label="Default select example">
+                {% for position in positionList %}
+                    <option 
+                    selected = {{ employeeData.4 == position.1 }}
+                    value={{position.0}}>{{position.1}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Категория</label>
+            <select class="form-select" aria-label="Default select example">
+                {% for category in categoryList %}
+                    <option 
+                    selected = {{ employeeData.5 == category.1 }}
+                    value={{category.0}}>{{category.1}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto">
+          <button type="submit" onclick="" class="btn btn-primary mb-3">Создать</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
