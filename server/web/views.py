@@ -8,7 +8,6 @@ from django.http import HttpResponseRedirect
 
 
 def EmployeePage(request):
-    #data = {'employeeList' : [{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'},{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'},{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'},{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'},{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'},{'id' : 1, 'fullName' : 'Sergey.Semkin', 'sex' : 'Man', 'age' : 22, 'position' : 'Programer', 'category' : 'Middel'}]}
     data = []
     with connection.cursor() as cursor:
         cursor.execute('''SELECT 
@@ -45,17 +44,14 @@ def AddEmployeePage(request):
 def EditEmployeePage(request, id):
     employee = Employee()
     with connection.cursor() as cursor:
-        print('id', str(id))
         cursor.execute('select * from public.api_employee ae where id = ' + str(id))
         employeeData = cursor.fetchone()
-        print('employeeData', employeeData)
+
         cursor.execute('select * from public."api_сategory" where id =  ' + str(employeeData[5]))
         category = cursor.fetchone()
-        print(category)
 
         cursor.execute('select * from api_position where id = ' + str(employeeData[4]))
         position = cursor.fetchone()
-        print(position)
 
         employee.id = employeeData[0]
         employee.fullName = employeeData[1]
@@ -87,7 +83,6 @@ def PositionPage(request):
                            order by id''')
         for row in cursor.fetchall():
             data.append(row)
-        print(data)
     return render(request, 'Position.html', {'positionList' : data})
 
 

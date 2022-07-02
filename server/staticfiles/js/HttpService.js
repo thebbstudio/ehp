@@ -8,13 +8,13 @@ class HttpService {
         });
         if (response.ok){
           alert('Сотрудник успешно удалён');
+          document.getElementById(`row-${id}`).remove();
         }
         else{
-          let msg = `Ошибка удаления, возможно объект уже не существует (код ${response.status})`
+          let msg = `Ошибка удаления (код ${response.status})`
           console.log(msg)
           alert(msg)
         }
-        document.getElementById(`row-${id}`).remove();
         console.log(response.ok)
     }
     catch (error){
@@ -29,7 +29,7 @@ class HttpService {
             method: 'DELETE'
         });
         if (response.ok){
-          alert('Сотрудник успешно удалён');
+          alert('Должность успешно удалёна');
         }
         else{
           let msg = `Ошибка удаления, возможно объект уже не существует (код ${response.status})`

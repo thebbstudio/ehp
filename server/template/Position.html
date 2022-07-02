@@ -3,10 +3,14 @@
 {% block title %}Должности{% endblock %}
 {% block content %}
 
-<a href={% url 'addPosition' %}>
-  <img src="{{ MEDIA_URL }}plus.png" width="30" height="30" alt="Добавить объект" />
-</a>
-<table class="table">
+<div class="p-3">
+  <a class="text-sm" href={% url 'addPosition' %}>
+    <img class="img-responsive" src="{{ MEDIA_URL }}plus.png" width="30" height="30" alt="Добавить должность" />
+    Добавить должность
+  </a>
+</div>
+<div class="m-3">
+  <table class="table">
     <thead class="thead-light">
       <tr>
         <th scope="col"></th>
@@ -37,4 +41,5 @@
     {% endfor %}
     </tbody>
   </table>
+</div>
 {% endblock %}
