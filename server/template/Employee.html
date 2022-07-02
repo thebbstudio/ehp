@@ -21,12 +21,13 @@
     </thead>
     <tbody>
     {% for employee in employeeList %}
-        <tr>
+      {% csrf_token %}
+        <tr id="row-{{ employee.0 }}">
             <th scope="row">
-              <button class="btn btn-outline-dark  btn-sm" onclick="navigateToEditEmployee({{employee.0}})">
+              <button class="btn btn-outline-dark  btn-sm" onclick="navigateToEditEmployee({{ employee.0 }})">
                 <img src="{{ MEDIA_URL }}edit.png" width="30" height="30" alt="редак." />
               </button>
-              <button class="btn btn-outline-dark btn-sm">
+              <button class="btn btn-outline-dark btn-sm" onclick="HttpService.DeleteEmployee({{ employee.0 }})">
                 <img src="{{ MEDIA_URL }}delete.png" width="30" height="30" alt="Удал." />
               </button>
             </th>

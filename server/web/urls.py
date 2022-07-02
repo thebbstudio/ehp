@@ -8,10 +8,11 @@ from django.conf import settings
 from .views import *
 
 urlpatterns = [
-    url(r'^Employee/$', EmployeePage, name='employee'),
-    url(r'^Position/$', PositionPage, name='position'),
-    url(r'^AddEmployee/$', AddEmployeePage, name='addEmployee'),
-    url(r'^AddPosition/$', AddPositionPage, name='addPosition'),
-    url(r'^editemployee/(?P<id>)', EditEmployeePage),
-    url(r'^editposition/(?P<id>)', EditPositionPage),
+    url(r'^employee/$', EmployeePage, name='employee'),
+    url(r'^position/$', PositionPage, name='position'),
+    url(r'^addEmployee/$', AddEmployeePage, name='addEmployee'),
+    url(r'^addPosition/$', AddPositionPage, name='addPosition'),
+    url(r'^editEmployee/(?P<id>\d+)', EditEmployeePage),
+    url(r'^editPosition/(?P<id>\d+)', EditPositionPage),
+    url(r'^.*$', RedirectView.as_view(url='/employee/', permanent=False), name='index')
 ]

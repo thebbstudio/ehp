@@ -3,42 +3,12 @@
 
 {% block content %}
 <div class="container">
-    <h3>Форма добавления сотрудника</h3>
-    <form>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">ФИО</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Пол</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Возраст</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Должность</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Категория</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Создать</button>
-        </div>
-
+    <h3>Форма изменения данных должности</h3>
+   
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" onclick="" class="btn btn-primary mb-3">Сохранить</button>
     </form>
 </div>
 

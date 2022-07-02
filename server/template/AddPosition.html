@@ -2,43 +2,17 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <h3>Форма добавления сотрудника</h3>
-    <form>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">ФИО</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Пол</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Возраст</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Должность</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Категория</label>
-            <div class="col-sm-10">
-                <input type="text" width="50px" class="form-control" >
-            </div>
-        </div>
+<div class="p-3 col-md-6 offset-md-3">
+    <h3>Форма добавления должности</h3>
+    {% if request.GET.created %}
+        <p>Должность успешно создана!!!</p>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
         <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Создать</button>
+            <button type="submit" onclick="" class="btn btn-primary mb-3">Создать</button>
         </div>
-
     </form>
 </div>
 

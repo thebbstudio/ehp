@@ -10,6 +10,8 @@ class Сategory(models.Model):
 
 class Position(models.Model):
     name = models.CharField(max_length=50)
+    isActive = models.BooleanField(default=True)
+    isDeleted = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name

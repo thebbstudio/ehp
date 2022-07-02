@@ -3,7 +3,7 @@
 {% block title %}Должности{% endblock %}
 {% block content %}
 
-<a href="AddPosition">
+<a href={% url 'addPosition' %}>
   <img src="{{ MEDIA_URL }}plus.png" width="30" height="30" alt="Добавить объект" />
 </a>
 <table class="table">
@@ -12,17 +12,20 @@
         <th scope="col"></th>
         <th scope="col">#</th>
         <th scope="col">Название должности</th>
+        <th scope="col">Должность активна</th>
       </tr>
     </thead>
     <tbody>
     {% for position in positionList %}
-        <tr>
+    
+      {% csrf_token %}
+        <tr id="row-{{ position.0 }}">
             <th scope="row">
               <center>
-                <button class="btn btn-outline-dark  btn-sm" onclick="navigateToEditPosition({{position.0}})">
+                <button class="btn btn-outline-dark  btn-sm" onclick="navigateToEditPosition({{ position.0 }})">
                   <img src="{{ MEDIA_URL }}edit.png" width="30" height="30" alt="редак." />
                 </button>
-                <button class="btn btn-outline-dark btn-sm">
+                <button class="btn btn-outline-dark btn-sm" onclick="HttpService.DeleteEmployee({{ position.0 }})">
                   <img src="{{ MEDIA_URL }}delete.png" width="30" height="30" alt="Удал." />
                 </button>
               </center>
