@@ -23,6 +23,12 @@
       </tr>
     </thead>
     <tbody>
+    
+      <!--
+
+        Добавление строк с данными сотрудников путём перебора
+
+      -->
     {% for employee in employeeList %}
       {% csrf_token %}
         <tr id="row-{{ employee.0 }}">

@@ -5,11 +5,13 @@
 <div class="p-3 col-md-6 offset-md-3">
     <h3>Форма добавления сотрудника</h3>
 
+    <!-- Если возвращаем сохранную успешно форму сообщаем об этом-->
     {% if request.GET.created %}
         <p>Сотрудник успешно создан!!!</p>
     {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
+        <!--Создание созданной в представлении формы-->
         {{ form.as_p }}
         <div class="col-auto">
             <button type="submit" onclick="" class="btn btn-primary mb-3">Создать</button>

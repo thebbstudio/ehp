@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^addPosition/$', AddPositionPage, name='addPosition'),
     url(r'^editEmployee/(?P<id>\d+)', EditEmployeePage),
     url(r'^editPosition/(?P<id>\d+)', EditPositionPage),
-    url(r'^.*$', RedirectView.as_view(url='/employee/', permanent=False), name='index')
+    # При запросе сугубо по домены, происходит редирект на страницу сотрудников
+    url(r'^.*$', RedirectView.as_view(url='/employee/', permanent=False))
 ]

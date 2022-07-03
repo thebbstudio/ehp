@@ -8,6 +8,7 @@
 
     <form action="" method="POST">
         {% csrf_token %}
+        <!--Создание созданной в представлении формы-->
         {{ form.as_p }}
         <button type="submit" onclick="" class="btn btn-primary mb-3">Сохранить</button>
     </form>
