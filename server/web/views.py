@@ -35,8 +35,8 @@ def AddEmployeePage(request):
 
         # Сохраняем форму если валидная и передаём Created = True
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/AddEmployee?created=True')
+            form.CustomInsert()
+            return HttpResponseRedirect('/addEmployee/?created=True')
     else:
         # Если метод не POST то значит форма не сохраняется, 
         # а запрашивается нужна пустая форма
@@ -72,7 +72,7 @@ def EditEmployeePage(request, id):
 
     # Если форма валидная, значит была заполена и происходит редирект на список сотрудников
     if form.is_valid():
-        form.save()
+        form.CustomUpdate()
         return redirect('employee')
 
     return render(request, 'EditEmployee.html', {'form':form})
@@ -101,8 +101,8 @@ def AddPositionPage(request):
         form = PositionForm(request.POST)
         # Сохраняем форму если валидная и передаём Created = True
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/AddPosition?created=True')
+            form.CustomInsert()
+            return HttpResponseRedirect('/addPosition/?created=True')
     else:
         # Если метод не POST то значит форма не сохраняется, 
         # а запрашивается нужна пустая форма
@@ -125,7 +125,7 @@ def EditPositionPage(request, id):
 
     # Если форма валидная, значит сейчас данные сохраняем, и редиректим на список должностей
     if form.is_valid():
-        form.save()
+        form.CustomUpdate()
         return redirect('position')
     
     # Передача данных в Шаблон    
